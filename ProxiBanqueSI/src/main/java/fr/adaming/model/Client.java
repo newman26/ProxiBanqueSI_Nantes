@@ -49,8 +49,7 @@ public class Client extends Personne {
 	public Client() {
 	}
 
-	public Client(String nom, String prenom, String adresse, int codePostal,
-			String ville, String telephone) {
+	public Client(String nom, String prenom, String adresse, int codePostal,String ville, String telephone) {
 		super(nom, prenom);
 		this.adresse = adresse;
 		this.codePostal = codePostal;
@@ -68,6 +67,7 @@ public class Client extends Personne {
 		this.telephone = telephone;
 	}
 
+	
 	//Getters et Setters 
 	public int getId() {
 		return id;

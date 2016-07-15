@@ -31,10 +31,10 @@ public class Conseiller extends Personne{
 	public Conseiller() {
 	}
 	
-	public Conseiller(Long idConseiller, String nomAgence) {
-		this.idConseiller = idConseiller;
-		this.nomAgence = nomAgence;
-	}
+	public Conseiller(String nom, String prenom, String nomAgence) {
+	super(nom, prenom);
+	this.nomAgence = nomAgence;
+}
 
 	public Conseiller(String nom, String prenom, Long idConseiller,
 			String nomAgence) {
