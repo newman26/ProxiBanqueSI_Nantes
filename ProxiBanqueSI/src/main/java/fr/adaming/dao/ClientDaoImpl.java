@@ -32,9 +32,9 @@ public class ClientDaoImpl implements IClientDao {
 	
 	@Override
 	public void addClient(Client client) {
-		Session session=sessionFactory.openSession();
+		Session session=sessionFactory.getCurrentSession();
 		session.save(client);
-		session.close();
+		
 		
 	}
 
@@ -46,8 +46,9 @@ public class ClientDaoImpl implements IClientDao {
 
 	@Override
 	public void deleteClient(Client client) {
-		// TODO Auto-generated method stub
-
+		Session session=sessionFactory.getCurrentSession();
+		session.delete(client);
+	
 	}
 
 	@Override
@@ -64,8 +65,10 @@ public class ClientDaoImpl implements IClientDao {
 
 	@Override
 	public Client findClientById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session=sessionFactory.getCurrentSession();
+		Client client=(Client) session.get(Client.class, id);
+		
+		return  client;
 	}
 
 	@Override

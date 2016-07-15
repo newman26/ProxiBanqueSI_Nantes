@@ -42,11 +42,10 @@ public class CompteEpargne extends Compte{
 
 
 	public CompteEpargne(String numCompte, float solde, Date dateCreation,
-			Long idCompteEpargne, float tauxRemuneration, Client client) {
+			Long idCompteEpargne, float tauxRemuneration) {
 		super(numCompte, solde, dateCreation);
 		IdCompteEpargne = idCompteEpargne;
 		this.tauxRemuneration = tauxRemuneration;
-		this.client = client;
 	}
 
 	
@@ -80,10 +79,7 @@ public class CompteEpargne extends Compte{
 	@Override
 	public String toString() {
 		return "CompteEpargne [IdCompteEpargne=" + IdCompteEpargne
-				+ ", tauxRemuneration=" + tauxRemuneration + ", client="
-				+ client + ", NumCompte=" + getNumCompte()
-				+ ", Solde=" + getSolde() + ", DateCreation="
-				+ getDateCreation() + "]";
+				+ ", tauxRemuneration=" + tauxRemuneration  + "]";
 	}
 
 

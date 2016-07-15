@@ -136,9 +136,7 @@ public class Client extends Personne {
 	@Override
 	public String toString() {
 		return "Client [id=" + id + ", adresse=" + adresse + ", codePostal="
-				+ codePostal + ", ville=" + ville + ", telephone=" + telephone
-				+ ", compteCourants=" + compteCourants + ", compteEpargnes="
-				+ compteEpargnes + "]";
+				+ codePostal + ", ville=" + ville + ", telephone=" + telephone + "]";
 	}
 
 }

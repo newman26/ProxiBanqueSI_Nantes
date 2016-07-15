@@ -95,9 +95,7 @@ public class CompteCourant extends Compte{
 	public String toString() {
 		return "CompteCourant [IdComptecourant=" + IdComptecourant
 				+ ", decouvertAuto=" + decouvertAuto + ", carteCredit="
-				+ carteCredit + ", NumCompte=" + getNumCompte()
-				+ ", Solde=" + getSolde() + ", DateCreation="
-				+ getDateCreation() + "]";
+				+ carteCredit + "]";
 	}
 
 	

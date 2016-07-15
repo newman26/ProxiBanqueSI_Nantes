@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import fr.adaming.model.CompteEpargne;
+
+
 @Repository("compteEpargneDao")
 @Transactional
 public class CompteEpargneDaoImpl implements ICompteEpargneDao {
