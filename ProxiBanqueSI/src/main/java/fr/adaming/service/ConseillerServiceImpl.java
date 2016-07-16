@@ -2,9 +2,26 @@ package fr.adaming.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import fr.adaming.dao.IConseillerDao;
 import fr.adaming.model.Conseiller;
 
+@Service("conseillerService")
 public class ConseillerServiceImpl implements IConseillerService {
+
+	@Autowired
+	IConseillerDao conseillerDao;
+
+	
+	public IConseillerDao getConseillerDao() {
+		return conseillerDao;
+	}
+
+	public void setConseillerDao(IConseillerDao conseillerDao) {
+		this.conseillerDao = conseillerDao;
+	}
 
 	@Override
 	public void addConseiller(Conseiller conseiller) {
@@ -32,8 +49,7 @@ public class ConseillerServiceImpl implements IConseillerService {
 
 	@Override
 	public Conseiller findConseillerById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return conseillerDao.findConseillerById(id);
 	}
 
 }

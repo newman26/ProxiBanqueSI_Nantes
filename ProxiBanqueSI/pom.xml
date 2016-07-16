@@ -1,11 +1,12 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>Salle_Jardin</groupId>
-  <artifactId>ProxiBanqueSI</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>war</packaging>
-  
-  <properties>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>Salle_Jardin</groupId>
+	<artifactId>ProxiBanqueSI</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
+
+	<properties>
 		<spring.version>4.1.5.RELEASE</spring.version>
 		<hibernate.version>4.3.8.Final</hibernate.version>
 		<mysql.driver.version>5.1.38</mysql.driver.version>
@@ -201,16 +202,16 @@
 			<artifactId>commons-pool</artifactId>
 			<version>1.2</version>
 		</dependency>
-		
-		
-		
-<!-- *****************ajoutées***************** -->
+
+
+
+		<!-- *****************ajoutées***************** -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-test</artifactId>
 			<version>4.1.5.RELEASE</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>javax.ws.rs</groupId>
 			<artifactId>javax.ws.rs-api</artifactId>
@@ -230,8 +231,8 @@
 
 
 
-	
-		<build>
+
+	<build>
 		<finalName>ProxyBanque</finalName>
 		<plugins>
 			<plugin>

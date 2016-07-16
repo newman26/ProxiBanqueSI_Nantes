@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import fr.adaming.model.Client;
 import fr.adaming.model.Conseiller;
 
 
@@ -60,8 +61,9 @@ public class ConseillerDaoImpl implements IConseillerDao {
 
 	@Override
 	public Conseiller findConseillerById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		Session session=sessionFactory.getCurrentSession();
+		Conseiller conseiller=(Conseiller) session.get(Conseiller.class, id);
+		return conseiller;
 	}
 
 }

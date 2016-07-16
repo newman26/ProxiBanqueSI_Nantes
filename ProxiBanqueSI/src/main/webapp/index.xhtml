@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>Ajout de Client</title>
+</h:head>
+<h:body>
+	<h:form>
+		<div id="body">
+			<fieldset>
+				<legend>Client</legend>
+
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="nom" value="Nom  : " />
+					<p:inputMask id="nom" value="#{clientBean.client.nom}"
+						required="true" />
+
+					<p:outputLabel for="prenom" value="Prenom  : " />
+					<p:inputMask id="prenom" value="#{clientBean.client.prenom}"
+						required="true" />
+
+					<p:outputLabel for="adresse" value="Adresse: " />
+					<p:inputMask id="adresse" value="#{clientBean.client.adresse}"
+						required="true" />
+
+					<p:outputLabel for="codePostal" value="Code Postal: " />
+					<p:inputMask id="codePostal"
+						value="#{clientBean.client.codePostal}" required="true" />
+
+					<p:outputLabel for="ville" value="Ville : " />
+					<p:inputMask id="ville" value="#{clientBean.client.ville}"
+						required="true" />
+
+					<p:outputLabel for="telephone" value="Telephone : " />
+					<p:inputMask id="telephone" value="#{clientBean.client.telephone}" />
+
+					<p:outputLabel for="idConseiller" value="Conseiller : " />
+					<p:inputMask id="idConseiller" value="#{clientBean.idConseiller}"
+						required="true" />
+
+				</h:panelGrid>
+
+
+			</fieldset>
+		</div>
+		<h:commandButton update="@all" value="ajout"
+			action="#{clientBean.addClient()}">
+		</h:commandButton>
+	</h:form>
+
+</h:body>
+
+</html>
