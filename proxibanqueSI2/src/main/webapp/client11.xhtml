@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<div>
+		<ui:include src="/WEB-INF/templates/header.xhtml">
+		</ui:include>
+	</div>
+	<div>
+		<ui:include src="/WEB-INF/templates/barremenu.xhtml">
+		</ui:include>
+	</div>
+
+
+	<h2>Nouveau Client</h2>
+
+	<h:form>
+		<div id="body">
+			<fieldset>
+				<legend>Client</legend>
+
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="nom" value="Nom  : " />
+					<p:inputMask id="nom" value="#{clientBean.client.nom}"
+						required="true" />
+
+					<p:outputLabel for="prenom" value="Prenom  : " />
+					<p:inputMask id="prenom" value="#{clientBean.client.prenom}"
+						required="true" />
+
+					<p:outputLabel for="adresse" value="Adresse: " />
+					<p:inputMask id="adresse" value="#{clientBean.client.adresse}"
+						required="true" />
+
+					<p:outputLabel for="codePostal" value="Code Postal: " />
+					<p:inputMask id="codePostal"
+						value="#{clientBean.client.codePostal}" required="true" />
+
+					<p:outputLabel for="ville" value="Ville : " />
+					<p:inputMask id="ville" value="#{clientBean.client.ville}"
+						required="true" />
+
+					<p:outputLabel for="telephone" value="Telephone : " />
+					<p:inputMask id="telephone" value="#{clientBean.client.telephone}" />
+
+					<p:outputLabel for="idConseiller" value="Conseiller : " />
+					<p:inputMask id="idConseiller" value="#{clientBean.idConseiller}"
+						required="true" />
+
+				</h:panelGrid>
+
+
+			</fieldset>
+		</div>
+		<!--  ***************************Compte Courant********************************************************************* -->
+		<div id="body">
+			<fieldset>
+				<legend>Compte Courant</legend>
+
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<p:outputLabel for="csolde" value="Solde :  " />
+					<p:inputMask id="csolde" value="#{clientBean.compteCourant.solde}" />
+
+					<p:outputLabel for="decouvertAuto" value="Decouvert Autorisé : " />
+					<p:inputMask id="decouvertAuto"
+						value="#{clientBean.compteCourant.decouvertAuto}" required="true" />
+
+					<p:outputLabel for="carteCredit"
+						value="Numero de Carte de Credit  : " />
+					<p:inputMask id="carteCredit"
+						value="#{clientBean.compteCourant.carteCredit}" />
+				</h:panelGrid>
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+					<h:outputText value="Compte Courant : " />
+					<p:selectBooleanCheckbox value="#{clientBean.addCompteCourant}" />
+
+				</h:panelGrid>
+
+			</fieldset>
+		</div>
+		<!--  **********************************Compte Epargne************************************************************** -->
+
+		<div id="body">
+			<fieldset>
+				<legend>Compte Epargne</legend>
+
+
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<p:outputLabel for="esolde" value="Solde :  " />
+					<p:inputMask id="esolde" value="#{clientBean.compteEpargne.solde}" />
+
+					<p:outputLabel for="tauxRemuneration"
+						value="Taux de Remuneration :  " />
+					<p:inputMask id="tauxRemuneration"
+						value="#{clientBean.compteEpargne.tauxRemuneration}" />
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+					<h:outputText value=" Compte Epargne : " />
+					<p:selectBooleanCheckbox value="#{clientBean.addCompteEpargne}" />
+
+
+				</h:panelGrid>
+
+			</fieldset>
+		</div>
+		<div align="left">
+			<h:commandButton update="@all" value="ajout"
+				action="#{clientBean.addClient()}">
+			</h:commandButton>
+
+		</div>
+	</h:form>
+	<h:form>
+		<h3>Identification</h3>
+		<h:inputText id="idconseillerClient" immediate="true"
+			value="#{clientBean.conseiller.idConseiller}" size="10">
+		</h:inputText>
+
+		<h:commandButton value="validation"
+			action="#{clientBean.getClientByIdConseiller()}">
+		</h:commandButton>
+
+		<p:dataTable id="liste" value="#{clientBean.list}" var="s" border="1">
+
+
+			<p:column headerText="numero du client">
+				<h:outputText value="#{s.id}" />
+			</p:column>
+
+			<p:column headerText="nom">
+				<h:outputText value="#{s.nom}" />
+			</p:column>
+			<p:column headerText="prenom">
+				<h:outputText value="#{s.prenom}" />
+			</p:column>
+			<p:column headerText="adresse">
+				<h:outputText value="#{s.adresse}" />
+			</p:column>
+			<p:column headerText="code postale">
+				<h:outputText value="#{s.codePostal}" />
+			</p:column>
+			<p:column headerText="ville">
+				<h:outputText value="#{s.ville}" />
+			</p:column>
+			<p:column headerText="telephone">
+				<h:outputText value="#{s.telephone}" />
+			</p:column>
+			<p:column headerText="nombre de compte courant">
+				<h:outputText value="#{s.compteCourants.size()}" />
+			</p:column>
+			<p:column headerText="nombre de compte epargne">
+				<h:outputText value="#{s.compteEpargnes.size()}" />
+			</p:column>
+		</p:dataTable>
+
+
+	</h:form>
+	
+</h:body>
+</html>

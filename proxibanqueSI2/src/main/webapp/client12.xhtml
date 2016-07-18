@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:body>
+	<div>
+		<ui:include src="/WEB-INF/templates/header.xhtml">
+		</ui:include>
+	</div>
+	<div>
+		<ui:include src="/WEB-INF/templates/barremenu.xhtml">
+		</ui:include>
+	</div>
+
+	<h:form>
+		<!--  ***************************Compte Courant********************************************************************* -->
+		<div id="body">
+			<fieldset>
+				<legend>Compte Courant</legend>
+
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<p:outputLabel for="csolde" value="Solde :  " />
+					<p:inputMask id="csolde" value="#{clientBean.compteCourant.solde}" />
+
+					<p:outputLabel for="decouvertAuto" value="Decouvert Autorisé : " />
+					<p:inputMask id="decouvertAuto"
+						value="#{clientBean.compteCourant.decouvertAuto}" required="true" />
+
+					<p:outputLabel for="carteCredit"
+						value="Numero de Carte de Credit  : " />
+					<p:inputMask id="carteCredit"
+						value="#{clientBean.compteCourant.carteCredit}" />
+				</h:panelGrid>
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+					<h:outputText value="Compte Courant : " />
+					<p:selectBooleanCheckbox value="#{clientBean.addCompteCourant}" />
+
+				</h:panelGrid>
+
+			</fieldset>
+		</div>
+
+		<!--  **********************************Compte Epargne************************************************************** -->
+
+
+		<div id="body">
+			<fieldset>
+				<legend>Compte Epargne</legend>
+
+
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<p:outputLabel for="esolde" value="Solde :  " />
+					<p:inputMask id="esolde" value="#{clientBean.compteEpargne.solde}" />
+
+					<p:outputLabel for="tauxRemuneration"
+						value="Taux de Remuneration :  " />
+					<p:inputMask id="tauxRemuneration"
+						value="#{clientBean.compteEpargne.tauxRemuneration}" />
+
+				</h:panelGrid>
+
+				<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
+					<h:outputText value=" Compte Epargne : " />
+					<p:selectBooleanCheckbox value="#{clientBean.addCompteEpargne}" />
+				</h:panelGrid>
+			</fieldset>
+		</div>
+
+		<div align="left">
+			<p:outputLabel for="idClientAjoutComptes"
+				value="identifiant du cliant  :  " />
+			<p:inputMask id="idClientAjoutComptes"
+				value="#{clientBean.client.id}" required="true" />
+
+
+			<h:commandButton value="confirmer l'ajout"
+				action="#{clientBean.addComptesToClient()}" />
+		</div>
+	</h:form>
+
+	<!-- table compte courant-->
+	<h3>Comptes courants</h3>
+	<p:dataTable value="#{clientBean.compteCourantList}" var="s" border="1">
+		<p:column headerText="identifiant du client">
+
+			<h:outputText value="#{s.client.id}" />
+		</p:column>
+		<p:column headerText="Nom">
+
+			<h:outputText value="#{s.client.nom}" />
+		</p:column>
+		<p:column headerText="Prenom">
+
+			<h:outputText value="#{s.client.prenom}" />
+		</p:column>
+		<p:column headerText="identifiant du compte">
+
+			<h:outputText value="#{s.idComptecourant}" />
+		</p:column>
+		<p:column headerText="date de creation">
+
+			<h:outputText value="#{s.dateCreation}" />
+
+		</p:column>
+		<p:column headerText="Solde">
+
+			<h:outputText value="#{s.solde}" />
+		</p:column>
+		<p:column headerText="decouvert autorisé">
+
+			<h:outputText value="#{s.decouvertAuto}" />
+		</p:column>
+	</p:dataTable>
+
+	<!-- table compte epargne-->
+	<h3>Comptes épargne</h3>
+	<p:dataTable value="#{clientBean.compteEpargneList}" var="s" border="1">
+		<p:column headerText="identifiant du client">
+
+			<h:outputText value="#{s.client.id}" />
+		</p:column>
+		<p:column headerText="Nom">
+
+			<h:outputText value="#{s.client.nom}" />
+		</p:column>
+		<p:column headerText="Prenom">
+
+			<h:outputText value="#{s.client.prenom}" />
+		</p:column>
+		<p:column headerText="identifiant du compte">
+
+			<h:outputText value="#{s.idCompteEpargne}" />
+		</p:column>
+		<p:column headerText="date de creation">
+
+			<h:outputText value="#{s.dateCreation}" />
+		</p:column>
+
+		<p:column headerText="Solde">
+
+			<h:outputText value="#{s.solde}" />
+		</p:column>
+		<p:column headerText="taux d'interet">
+
+			<h:outputText value="#{s.tauxRemuneration}" />
+		</p:column>
+	</p:dataTable>
+
+	<div>
+		<ui:include src="/WEB-INF/templates/footer.xhtml">
+		</ui:include>
+	</div>
+</h:body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<link rel="stylesheet" media="screen" type="text/css" title="index"
+		href="menu.css" />
+</h:head>
+<ui:composition>
+	<div id="sidebar">
+
+		<h:form>
+			<h3>Identification</h3>
+			<h:inputText id="idconseillerClient" immediate="true"
+				value="#{clientBean.conseiller.idConseiller}" size="10">
+			</h:inputText>
+
+			<h:commandButton value="validation"
+				action="#{clientBean.getClientByIdConseiller()}">
+			</h:commandButton>
+		</h:form>
+
+		<h:form>
+
+			<p:dataTable value="#{clientBean.list}" var="s" border="1">
+
+
+				<p:column headerText="identifiant">
+
+					<h:outputText value="#{s.id}" />
+				</p:column>
+
+				<p:column headerText="nom">
+
+					<h:outputText value="#{s.nom}" />
+				</p:column>
+				<p:column headerText="prenom">
+
+					<h:outputText value="#{s.prenom}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+	</div>
+</ui:composition>
+</html>

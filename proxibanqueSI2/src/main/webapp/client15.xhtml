@@ -1,0 +1,111 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="/WEB-INF/templates/header.xhtml">
+		</ui:include>
+	</div>
+	<div>
+		<ui:include src="/WEB-INF/templates/barremenu.xhtml">
+		</ui:include>
+	</div>
+	<div>
+		<ui:include src="/WEB-INF/templates/listeclients.xhtml">
+		</ui:include>
+	</div>
+	<!--  *********************************Calculer la mensualité d'un crédit :********************************************** -->
+	<h:form>
+		<h3>Crédit à remboursement constant</h3>
+		<fieldset>
+			<legend>Calcule de la mensualité :</legend>
+
+			<h:panelGrid columns="3" cellpadding="3">
+				<p:outputLabel for="idClientAjoutCompte" value=" Montant : " />
+				<p:inputMask id="idClientAjoutCompte" value="#{wsrestBean.montant}"
+					required="true" />
+				<h:outputText value=" €" />
+
+				<p:outputLabel for="idClientAjoutCompt" value="Durée : " />
+				<p:inputMask id="idClientAjoutCompt" value="#{wsrestBean.duree}"
+					required="true" />
+				<h:outputText value=" mois" />
+
+				<p:outputLabel for="idClientAjoutComp" value=" Taux :" />
+				<p:inputMask id="idClientAjoutComp" value="#{wsrestBean.teag}"
+					required="true" />
+				<h:outputText value="%" />
+
+
+				<h:commandButton value="Calculer la mensualité"
+					action="#{wsrestBean.simulation()}" />
+			</h:panelGrid>
+			<br />
+			<h:outputText rendered="#{wsrestBean.editeMode1}"
+				value="Les mensualités s'élèveront à : #{wsrestBean.mensualite} €" />
+			<br /> <br />
+			<h:outputText rendered="#{wsrestBean.editeMode1}"
+				value="Montant total du crédit : #{wsrestBean.montantTotal} €" />
+			<br /> <br />
+			<h:outputText rendered="#{wsrestBean.editeMode1}"
+				value="Bénéfices de la banque :  #{wsrestBean.montantTotalCredit} €" />
+			<br />
+		</fieldset>
+
+
+
+		<!--  *********************************Calculer le capital d'un crédit :********************************************** -->
+		<fieldset>
+			<legend>Calculer le capital d'un crédit :</legend>
+			<h:panelGrid columns="3" columnClasses="col,col,col">
+
+
+				<p:outputLabel for="mensualite1" value=" Mensualité souhaitée :" />
+				<p:inputMask id="mensualite1" value="#{wsrestBean.mensualite1}"
+					required="true" />
+				<h:outputText value=" €" />
+
+				<p:outputLabel for="duree1" value="Durée : " />
+				<p:inputMask id="duree1" value="#{wsrestBean.duree1}"
+					required="true" />
+				<h:outputText value=" mois" />
+
+
+				<p:outputLabel for="teag1" value=" Taux :" />
+				<p:inputMask id="teag1" value="#{wsrestBean.teag1}" required="true" />
+				<h:outputText value="%" />
+
+
+			</h:panelGrid>
+
+			<h:commandButton value="Calculer le capital"
+				action="#{wsrestBean.simulation1()}" />
+			 <br /> <br />
+			<h:outputText rendered="#{wsrestBean.editeMode2}"
+				value="Avec une mensualité de :  #{wsrestBean.mensualite1} €" />
+			<br /> <br />
+			<h:outputText rendered="#{wsrestBean.editeMode2}"
+				value="Montant du crédit possible : #{wsrestBean.capital} €" />
+			<br /> <br />
+			<h:outputText rendered="#{wsrestBean.editeMode2}"
+				value="Pour une durée de  : #{wsrestBean.duree1}  mois" />
+			<br /> <br />
+			<h:outputText rendered="#{wsrestBean.editeMode2}"
+				value="Pour un coût total de  : #{wsrestBean.montantTotalCredit1} €" />
+			<br />
+		</fieldset>
+	</h:form>
+	<div>
+		<ui:include src="/WEB-INF/templates/footer.xhtml">
+		</ui:include>
+	</div>
+
+</h:body>
+</html>

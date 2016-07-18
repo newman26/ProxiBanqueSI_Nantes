@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="/WEB-INF/templates/header.xhtml">
+		</ui:include>
+	</div>
+	<div>
+		<ui:include src="/WEB-INF/templates/barremenu.xhtml">
+		</ui:include>
+	</div>
+	<div id="body">
+
+
+		<fieldset>
+			<legend>Client</legend>
+			<h:form>
+				<h:panelGrid columns="2" cellpadding="5">
+					<p:outputLabel for="nom" value="Nom  : " />
+					<p:inputMask id="nom" value="#{clientBean.client.nom}"
+						required="true" />
+
+					<p:outputLabel for="prenom" value="Prenom  : " />
+					<p:inputMask id="prenom" value="#{clientBean.client.prenom}"
+						required="true" />
+
+					<p:outputLabel for="adresse" value="Adresse: " />
+					<p:inputMask id="adresse" value="#{clientBean.client.adresse}"
+						required="true" />
+
+					<p:outputLabel for="codePostal" value="Code Postal: " />
+					<p:inputMask id="codePostal"
+						value="#{clientBean.client.codePostal}" required="true" />
+
+					<p:outputLabel for="ville" value="Ville : " />
+					<p:inputMask id="ville" value="#{clientBean.client.ville}"
+						required="true" />
+
+					<p:outputLabel for="telephone" value="Telephone : " />
+					<p:inputMask id="telephone" value="#{clientBean.client.telephone}" />
+
+				</h:panelGrid>
+
+				<h:commandButton value="Confirmer les modifications"
+					action="#{clientBean.updateClient()}" />
+			</h:form>
+		</fieldset>
+	</div>
+
+
+	<div>
+
+		<h:form>
+			<h3>Identification</h3>
+			<h:inputText id="idconseillerClient" immediate="true"
+				value="#{clientBean.conseiller.idConseiller}" size="10">
+			</h:inputText>
+
+			<h:commandButton value="validation"
+				action="#{clientBean.getClientByIdConseiller()}">
+			</h:commandButton>
+		</h:form>
+
+		<h:form>
+
+			<p:dataTable id="liste" value="#{clientBean.list}" var="s" border="1">
+
+
+				<p:column headerText="numero du client">
+					<h:outputText value="#{s.id}" />
+				</p:column>
+
+				<p:column headerText="nom">
+					<h:outputText value="#{s.nom}" />
+				</p:column>
+				<p:column headerText="prenom">
+					<h:outputText value="#{s.prenom}" />
+				</p:column>
+				<p:column headerText="adresse">
+					<h:outputText value="#{s.adresse}" />
+				</p:column>
+				<p:column headerText="code postale">
+					<h:outputText value="#{s.codePostal}" />
+				</p:column>
+				<p:column headerText="ville">
+					<h:outputText value="#{s.ville}" />
+				</p:column>
+				<p:column headerText="telephone">
+					<h:outputText value="#{s.telephone}" />
+				</p:column>
+				<p:column headerText="nombre de compte courant">
+					<h:outputText value="#{s.compteCourants.size()}" />
+				</p:column>
+				<p:column headerText="nombre de compte epargne">
+					<h:outputText value="#{s.compteEpargnes.size()}" />
+				</p:column>
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="Supprimer" />
+					</f:facet>
+					<h:commandLink update="@all" action="#{clientBean.deleteClient()}">
+						<h:outputText value="supprimer" />
+						<f:setPropertyActionListener target="#{clientBean.client}"
+							value="#{s}" />
+					</h:commandLink>
+				</p:column>
+
+				<p:column>
+					<f:facet name="header">
+						<h:outputText value="MAJ" />
+					</f:facet>
+					<h:commandLink update="@all" action="#{clientBean.updateClient()}">
+						<h:outputText value="maj" />
+						<f:setPropertyActionListener target="#{clientBean.client}"
+							value="#{s}" />
+					</h:commandLink>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</div>
+
+	<div>
+		<ui:include src="/WEB-INF/templates/footer.xhtml">
+		</ui:include>
+	</div>
+</h:body>
+</html>

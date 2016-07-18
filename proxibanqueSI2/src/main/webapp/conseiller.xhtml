@@ -1,0 +1,89 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:form="http://www.springframework.org/tags/form"
+      xmlns:spring="http://www.springframework.org/tags"
+      xmlns:mj="http://mojarra.dev.java.net/mojarra_ext">
+
+
+
+<h:body>
+
+	<h1>#{msgs.titre}</h1>
+	#{msgs.bonjour}
+	<h:form>
+
+
+		<h2>#{add.titre}</h2>
+
+
+		<h:panelGrid columns="3">
+ 
+			prenom : 
+				<h:inputText id="fname" value="#{conseillerBean.conseiller.prenom}"
+				size="50" label="First Name">
+				
+				<f:validateLength minimum="3" maximum="8" />
+			</h:inputText>
+
+			<h:message for="fname" style="color:red" />
+ 
+			nom : 
+				<h:inputText id="lname" value="#{conseillerBean.conseiller.nom}"
+				size="50" label="Last Name">
+				<f:validateLength minimum="3" maximum="8" />
+			</h:inputText>
+			
+			<h:message for="lname" style="color:red" />
+			
+			agence : 
+				<h:inputText id="ad" value="#{conseillerBean.conseiller.nomAgence}"
+				size="50" label="adresse">
+				<f:validateLength minimum="3" maximum="8" />
+			</h:inputText>
+			
+			<h:message for="ad" style="color:red" />
+			
+		</h:panelGrid>
+		
+		<h:commandButton value="#{msgs.add}" action="#{conseillerBean.addConseiller()}" />
+
+		<h:dataTable value="#{conseillerBean.getConseillerList()}" var="s" border="1">
+
+			<h:column>
+				<f:facet name="header">
+    				#{msgs.id}
+    			</f:facet>
+    				#{s.idConseiller}
+    		</h:column>
+
+			<h:column>
+				<f:facet name="header">
+    				#{msgs.prenom}
+				</f:facet>
+    				#{s.prenom}
+    		</h:column>
+
+			<h:column>
+				<f:facet name="header">
+    				#{msgs.nom}
+				</f:facet>
+    				#{s.nom}
+    		</h:column>
+
+
+			<h:column>
+				<f:facet name="header">
+    				#{msgs.adresse}
+				</f:facet>
+    				#{s.nomAgence}
+    		</h:column>
+
+</h:dataTable>
+    		
+    		
+</h:form>
+</h:body>
+</html>

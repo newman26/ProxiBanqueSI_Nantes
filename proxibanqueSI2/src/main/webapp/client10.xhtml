@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="/WEB-INF/templates/header.xhtml">
+		</ui:include>
+	</div>
+	<div>
+		<ui:include src="/WEB-INF/templates/barremenu.xhtml">
+		</ui:include>
+	</div>
+	<div>
+		<ui:include src="/WEB-INF/templates/listeclients.xhtml">
+		</ui:include>
+	</div>
+	<div id="body">
+		<h2>Rappel à effectuer :</h2>
+
+		<p:dataTable value="#{clientBean.lowBalance()}" var="s" border="1">
+			<p:column headerText="identifiant du client">
+
+				<h:outputText value="#{s.client.id}" />
+			</p:column>
+
+
+			<p:column headerText="identifiant du compte">
+
+				<h:outputText value="#{s.idComptecourant}" />
+			</p:column>
+			<p:column headerText="Solde">
+
+				<h:outputText value="#{s.solde}" />
+			</p:column>
+			<p:column headerText="decouvert autorisé">
+
+				<h:outputText value="#{s.decouvertAuto}" />
+			</p:column>
+			<p:column headerText="Nom">
+
+				<h:outputText value="#{s.client.nom}" />
+			</p:column>
+			<p:column headerText="Prenom">
+
+				<h:outputText value="#{s.client.prenom}" />
+			</p:column>
+			<p:column headerText="telephone">
+e
+				<h:outputText value="#{s.client.telephone}" />
+			</p:column>
+
+
+		</p:dataTable>
+	</div>
+
+	<div>
+		<ui:include src="/WEB-INF/templates/footer.xhtml">
+		</ui:include>
+	</div>
+</h:body>
+</html>

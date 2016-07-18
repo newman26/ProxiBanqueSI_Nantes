@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+</h:head>
+<h:body>
+	<div>
+		<ui:include src="/WEB-INF/templates/header.xhtml">
+		</ui:include>
+	</div>
+	<div>
+		<ui:include src="/WEB-INF/templates/barremenu.xhtml">
+		</ui:include>
+	</div>
+
+	<h3>Comptes courants</h3>
+	<p:dataTable value="#{clientBean.compteCourantList}" var="s" border="1">
+		<p:column headerText="identifiant du client">
+
+			<h:outputText value="#{s.client.id}" />
+		</p:column>
+		<p:column headerText="Nom">
+
+			<h:outputText value="#{s.client.nom}" />
+		</p:column>
+		<p:column headerText="Prenom">
+
+			<h:outputText value="#{s.client.prenom}" />
+		</p:column>
+		<p:column headerText="identifiant du compte">
+
+			<h:outputText value="#{s.idComptecourant}" />
+		</p:column>
+		<p:column headerText="date de creation">
+
+			<h:outputText value="#{s.dateCreation}" />
+		</p:column>
+
+		<p:column headerText="Solde">
+
+			<h:outputText value="#{s.solde}" />
+		</p:column>
+		<p:column headerText="decouvert autorisé">
+
+			<h:outputText value="#{s.decouvertAuto}" />
+		</p:column>
+	</p:dataTable>
+
+	<!-- table compte epargne-->
+	<h3>Comptes épargne</h3>
+	<p:dataTable value="#{clientBean.compteEpargneList}" var="s" border="1">
+		<p:column headerText="identifiant du client">
+
+			<h:outputText value="#{s.client.id}" />
+		</p:column>
+		<p:column headerText="Nom">
+
+			<h:outputText value="#{s.client.nom}" />
+		</p:column>
+		<p:column headerText="Prenom">
+
+			<h:outputText value="#{s.client.prenom}" />
+		</p:column>
+		<p:column headerText="identifiant du compte">
+
+			<h:outputText value="#{s.idCompteEpargne}"  />
+		</p:column>
+		<p:column headerText="date de creation">
+
+			<h:outputText value="#{s.dateCreation}" />
+		</p:column>
+
+		<p:column headerText="Solde">
+
+			<h:outputText value="#{s.solde}" />
+		</p:column>
+		<p:column headerText="taux d'interet">
+
+			<h:outputText value="#{s.tauxRemuneration}" />
+		</p:column>
+	</p:dataTable>
+	<!--  ***************************Compte Courant********************************************************************* -->
+	<h:form>
+		<div id="body">
+			<fieldset>
+				<legend>Compte Courant</legend>
+
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<p:outputLabel for="decouvertAuto" value="Decouvert Autorisé : " />
+					<p:inputMask id="decouvertAuto"
+						value="#{clientBean.compteCourant.decouvertAuto}" required="true" />
+
+					<p:outputLabel for="carteCredit"
+						value="Numero de Carte de Credit  : " />
+					<p:inputMask id="carteCredit"
+						value="#{clientBean.compteCourant.carteCredit}" />
+				</h:panelGrid>
+
+				<h:commandButton action="#{clientBean.updateCourant()}"
+					value="modifier le compte courant" />
+
+			</fieldset>
+		</div>
+		<!--  **********************************Compte Epargne************************************************************** -->
+
+		<div id="body">
+			<fieldset>
+				<legend>Compte Epargne</legend>
+
+
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<p:outputLabel for="tauxRemuneration"
+						value="Taux de Remuneration :  " />
+					<p:inputMask id="tauxRemuneration"
+						value="#{clientBean.compteEpargne.tauxRemuneration}" />
+
+				</h:panelGrid>
+
+
+				<h:commandButton action="#{clientBean.updateEpargne()}"
+					value="modifier le compte epargne" />
+
+
+			</fieldset>
+		</div>
+
+	</h:form>
+
+
+	<!--  ****************retirer/ajouter Compte Courant******************************************************************************** -->
+	<div>
+		<fieldset>
+			<legend>Compte Courant</legend>
+			<h:form>
+
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<p:outputLabel for="esolde" value="Solde :  " />
+					<p:inputMask id="esolde" value="#{clientBean.solde}" required="true"/>
+
+					<p:outputLabel for="Compte13" value="numero du compte courant :  " />
+					<p:inputMask id="Compte13" value="#{clientBean.idComptecourant1}" required="true"/>
+				</h:panelGrid>
+
+				<h:commandButton value="ajout" action="#{clientBean.addMoney()}" />
+				<h:commandButton value="retrait"
+					action="#{clientBean.takeMoneyOut()}" />
+				<h:messages style="color:red" />
+			</h:form>
+		</fieldset>
+	</div>
+	<!--  ****************ajouter Compte epargne******************************************************************************** -->
+	<div>
+		<fieldset>
+			<h:form>
+				<legend>Compte Epargne</legend>
+				<h:panelGrid columns="2" cellpadding="5">
+
+					<p:outputLabel for="esolde" value="Solde :  " />
+					<p:inputMask id="esolde" required="true" value="#{clientBean.solde}"/>
+
+					<p:outputLabel for="numC" value="Numero de compte épargne:" />
+					<p:inputMask id="numC" value="#{clientBean.idCompteEpargne2}" required="true" />
+				</h:panelGrid>
+
+				<h:commandButton value="ajout"
+					action="#{clientBean.addMoneyEpargne()}" />
+				<h:messages style="color:red" />
+			</h:form>
+		</fieldset>
+	</div>
+	<!--  **********************************virement************************************************************** -->
+	<div>
+		<fieldset>
+			<h:form>
+				<legend>virement</legend>
+				
+
+				<h:panelGrid columns="2" cellpadding="5">
+				<h3>compte débité</h3>
+
+					<p:outputLabel for="esolde" value="Solde :  " />
+					<p:inputMask id="esolde" value="#{clientBean.solde}" />
+
+					<p:outputLabel for="Compte13" value="numero du compte courant :  " />
+					<p:inputMask id="Compte13" value="#{clientBean.idComptecourant1}" required="true"/>
+
+					<p:outputLabel for="numE1" value="Numero de compte épargne:  " />
+					<p:inputMask id="numE1" required="true" value="#{clientBean.idCompteEpargne1}"/>
+			
+							<h3>compte credité</h3>
+			
+					<p:outputLabel for="Compte8" value="numero du compte courant :  " />
+					<p:inputMask id="Compte8" value="#{clientBean.idComptecourant2}" required="true"/>
+
+					<p:outputLabel for="nume3" value="Numero de compte épargne:" />
+					<p:inputMask id="nume3" value="#{clientBean.idCompteEpargne2}" required="true"/>
+				</h:panelGrid>
+
+					<h:commandButton value="virement" action="#{clientBean.virement}" />
+			</h:form>
+		</fieldset>
+	</div>
+	<div>
+		<ui:include src="/WEB-INF/templates/footer.xhtml">
+		</ui:include>
+	</div>
+</h:body>
+</html>

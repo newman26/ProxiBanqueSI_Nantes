@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:form="http://www.springframework.org/tags/form"
+	xmlns:spring="http://www.springframework.org/tags"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition>
+	<h:head>
+		<link rel="stylesheet" media="screen" type="text/css" title="index"
+			href="menu.css" />
+	</h:head>
+	<h:form>
+		<!-- <ul id="menu_horizontal">
+		<li><a href="client10.xhtml">accueil</a></li>
+		<li><a href="client11.xhtml">nouveau client</a></li>
+		<li><a href="client12.xhtml">ajout de compte</a></li>
+		<li><a href="client13.xhtml">gérer un client</a></li>
+		<li><a href="client14.xhtml">gérer les comptes</a></li>
+		<li><a href="client15.xhtml">Simulation Credit</a></li>
+	</ul> -->
+		<p:breadCrumb>
+
+			<p:menuitem value="accueil" url="client10.xhtml" />
+			<p:menuitem value="nouveau client" url="client11.xhtml" />
+			<p:menuitem value="ajout de compte" url="client12.xhtml" />
+			<p:menuitem value="gérer un client" url="client13.xhtml" />
+			<p:menuitem value="gérer les comptes" url="client14.xhtml" />
+			<p:menuitem value="Simulation Credit" url="client15.xhtml" />
+
+		</p:breadCrumb>
+	</h:form>
+</ui:composition>
+</html>
