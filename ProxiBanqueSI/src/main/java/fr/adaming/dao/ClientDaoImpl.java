@@ -73,6 +73,7 @@ public class ClientDaoImpl implements IClientDao {
 		return  client;
 	}
 
+	
 	@Override
 	public List<Client> findClientByNomAndPrenom(String nom, String prenom) {
 		// TODO Auto-generated method stub
