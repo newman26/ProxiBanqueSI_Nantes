@@ -19,7 +19,16 @@ public class ClientManagedBean implements Serializable {
 
 	private Client client;
 	private long idConseiller;
+	private int idClient;
 	
+	public int getIdClient() {
+		return idClient;
+	}
+
+	public void setIdClient(int idClient) {
+		this.idClient = idClient;
+	}
+
 	@ManagedProperty(value="#{conseillerService}")
 	IConseillerService conseillerService;
 	
@@ -78,6 +87,14 @@ public class ClientManagedBean implements Serializable {
 		clientService.addClient(this.client);
 		this.client=null;
 		
+	}
+	
+	public void deleteClient(){
+		System.out.println("========MB1=====================");
+		Client cl1=clientService.findClientById(this.idClient);
+		System.out.println("========MB2=====================");
+		System.out.println(cl1.getNom());
+		clientService.deleteClient(cl1);
 	}
 	
 	

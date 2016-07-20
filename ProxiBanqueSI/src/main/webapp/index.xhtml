@@ -52,6 +52,12 @@
 		</h:commandButton>
 	</h:form>
 
+	<h:form>
+					id: <p:inputText id="idClient" value="#{clientBean.idClient}" required="true" />
+		<h:commandButton  value="ajout"
+			action="#{clientBean.deleteClient()}">
+		</h:commandButton>
+	</h:form>
 </h:body>
 
 </html>

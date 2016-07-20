@@ -46,6 +46,7 @@ public class ClientDaoImpl implements IClientDao {
 
 	@Override
 	public void deleteClient(Client client) {
+		System.out.println("========Dao2=====================");
 		Session session=sessionFactory.getCurrentSession();
 		session.delete(client);
 	
@@ -65,6 +66,7 @@ public class ClientDaoImpl implements IClientDao {
 
 	@Override
 	public Client findClientById(int id) {
+		System.out.println("========Dao1=====================");
 		Session session=sessionFactory.getCurrentSession();
 		Client client=(Client) session.get(Client.class, id);
 		

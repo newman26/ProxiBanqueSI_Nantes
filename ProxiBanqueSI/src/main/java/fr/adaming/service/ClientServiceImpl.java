@@ -38,7 +38,8 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public void deleteClient(Client client) {
-		// TODO Auto-generated method stub
+		System.out.println("========Service2=====================");
+		clientDao.deleteClient(client);
 
 	}
 
@@ -56,8 +57,8 @@ public class ClientServiceImpl implements IClientService {
 
 	@Override
 	public Client findClientById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("========Service1=====================");
+		return clientDao.findClientById(id);
 	}
 
 	@Override
